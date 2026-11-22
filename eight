@@ -1,0 +1,252 @@
+EXPERIMENT – 2: JAVASCRIPT CALCULATOR USING SELENIUM WEBDRIVER
+
+1. AIM
+
+To create a simple calculator using JavaScript and perform automated testing using Selenium WebDriver with Java.
+
+2. THEORY
+
+What is Selenium WebDriver?
+
+Selenium WebDriver is an open-source automation testing tool used to test web applications automatically. It controls web browsers and performs actions like clicking buttons, entering text and checking results.
+
+Steps to set up a Java project for Selenium WebDriver:
+
+1. Install Java JDK.
+2. Download Selenium Java from the official Selenium website.
+3. Extract the downloaded ZIP file.
+4. Create a Java project.
+5. Add Selenium JAR files to the project.
+6. Create a Java class.
+7. Write and execute the Selenium program.
+
+Advantages of Selenium:
+
+1. Selenium is an open-source tool.
+2. It supports multiple browsers like Chrome, Firefox and Edge.
+3. It supports programming languages like Java, Python and JavaScript.
+4. It reduces manual testing.
+5. It saves time and effort.
+6. It supports parallel testing.
+7. It works on Windows, Linux and Mac.
+
+3. REQUIRED FILES
+
+1. javascriptCalculator.html
+2. FirstSeleniumPro2.java
+
+A folder named lib containing Selenium JAR files is also required.
+
+4. PROGRAM 1: JAVASCRIPT CALCULATOR
+
+File name: javascriptCalculator.html
+
+<html>
+<body>
+
+<h2>Simple Calculator</h2>
+
+<input id="a" placeholder="First number">
+<input id="b" placeholder="Second number">
+
+<button onclick="add()">Add</button>
+
+<h3 id="result"></h3>
+
+<script>
+function add() {
+let a = Number(document.getElementById("a").value);
+let b = Number(document.getElementById("b").value);
+
+document.getElementById("result").innerHTML = a + b;
+}
+</script>
+
+</body>
+</html>
+
+5. PROGRAM 2: SELENIUM AUTOMATION
+
+File name: FirstSeleniumPro2.java
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.io.File;
+
+public class FirstSeleniumPro2 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get(new File("javascriptCalculator.html").toURI().toString());
+
+        driver.findElement(By.id("a")).sendKeys("10");
+
+        driver.findElement(By.id("b")).sendKeys("20");
+
+        driver.findElement(By.tagName("button")).click();
+
+        System.out.println("Result: " +
+        driver.findElement(By.id("result")).getText());
+
+        driver.quit();
+    }
+}
+
+6. EXECUTION PROCEDURE
+
+Step 1: Create a folder
+
+1. Go to Desktop.
+2. Create a folder named SeleniumCalculator.
+
+Step 2: Create HTML file
+
+1. Open Notepad.
+2. Type the JavaScript calculator program.
+3. Save it as javascriptCalculator.html inside SeleniumCalculator.
+
+Step 3: Create Java file
+
+1. Open another Notepad.
+2. Type the Selenium Java program.
+3. Save it as FirstSeleniumPro2.java inside SeleniumCalculator.
+
+Step 4: Add Selenium libraries
+
+1. Download Selenium Java ZIP from https://www.selenium.dev/downloads/
+2. Extract the ZIP file.
+3. Create a folder named lib inside SeleniumCalculator.
+4. Copy all the extracted Selenium JAR files into lib.
+
+The folder structure should be:
+
+SeleniumCalculator
+
+- javascriptCalculator.html
+- FirstSeleniumPro2.java
+- lib (all Selenium JAR files)
+
+Step 5: Open Command Prompt
+
+1. Open the SeleniumCalculator folder.
+2. Click the address bar.
+3. Type cmd and press Enter.
+
+Step 6: Compile the Java program
+
+Type the following command and press Enter:
+
+javac -cp ".;lib/*" FirstSeleniumPro2.java
+
+If there are no errors, compilation is successful.
+
+Step 7: Execute the program
+
+Type the following command and press Enter:
+
+java -cp ".;lib/*" FirstSeleniumPro2
+
+Step 8: Observe the output
+
+1. Chrome browser opens automatically.
+2. The calculator webpage opens.
+3. Selenium enters 10 in the first input box.
+4. Selenium enters 20 in the second input box.
+5. Selenium clicks the Add button.
+6. The result is displayed in the Command Prompt.
+
+7. EXPECTED OUTPUT
+
+Result: 30
+
+8. RESULT
+
+Thus, a simple JavaScript calculator was created and successfully tested using Selenium WebDriver with Java. The automated testing program entered two numbers, clicked the Add button and displayed the result as 30.
+
+
+
+
+8.2
+
+EXPERIMENT – 3: JENKINS DATE AND TIME JOB
+
+AIM:
+
+To create a Jenkins job that runs every 2 minutes and prints the system date and time.
+
+PROCEDURE:
+
+Step 1: Open Jenkins
+
+1. Open Google Chrome.
+2. Enter http://localhost:8080.
+3. Login to Jenkins.
+
+Step 2: Create a New Job
+
+1. Click on New Item.
+2. Enter job name: DateTimeJob.
+3. Select Freestyle project.
+4. Click OK.
+
+Step 3: Configure Build Triggers
+
+1. Scroll down to Build Triggers.
+2. Select Build periodically.
+3. Enter the following schedule:
+
+H/2 * * * *
+
+This runs the job every 2 minutes.
+
+Step 4: Configure Build Steps
+
+1. Scroll down to Build Steps.
+
+2. Click Add build step.
+
+3. Select Execute Windows batch command.
+
+4. Enter the following commands:
+   
+   echo Current Date and Time:
+   echo %date% %time%
+
+Step 5: Save and Execute
+
+1. Click Save.
+2. Click Build Now.
+3. Wait for the build to complete.
+4. Open Build History.
+5. Click the latest build number.
+6. Click Console Output.
+
+EXPECTED OUTPUT:
+
+Current Date and Time:
+11/23/2026 10:30:00
+
+Finished: SUCCESS
+
+(The date and time will depend on the computer.)
+
+RESULT:
+
+Thus, a Jenkins Freestyle job was successfully created and configured to execute every 2 minutes and display the system date and time.
+
+
+8.3
+
+
+
+
+
+
+
+
+
+
+
+
