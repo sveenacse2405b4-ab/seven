@@ -1,0 +1,125 @@
+EXPERIMENT: IMAGE GALLERY USING HTML AND DOCKER
+
+AIM
+
+1. Build an HTML page with a gallery of 3–4 images with captions.
+2. Create a Docker image for the HTML gallery application and run it using port mapping.
+
+SOFTWARE REQUIRED
+
+- Notepad
+- Docker Desktop
+- Command Prompt
+- Google Chrome
+
+FILES REQUIRED
+
+Create a folder named "Gallery" on Desktop.
+
+Create two files inside it:
+
+1. index.html
+2. Dockerfile
+
+PROGRAM 1: index.html
+
+<html>
+<head>
+    <title>My Gallery</title>
+</head>
+<body style="text-align:center; background-color:lightblue;">
+
+    <h1>My Image Gallery</h1>
+
+    <img src="https://picsum.photos/id/10/200/150">
+    <h3>Nature</h3>
+
+    <img src="https://picsum.photos/id/20/200/150">
+    <h3>Forest</h3>
+
+    <img src="https://picsum.photos/id/30/200/150">
+    <h3>Flowers</h3>
+
+    <img src="https://picsum.photos/id/40/200/150">
+    <h3>Mountains</h3>
+
+</body>
+</html>
+
+Save as "index.html" inside Gallery.
+
+EXECUTION OF EXPERIMENT 1
+
+Double-click "index.html". It opens in Chrome and displays four images with captions.
+
+PROGRAM 2: Dockerfile
+
+FROM nginx:alpine
+
+COPY index.html /usr/share/nginx/html/
+
+EXPOSE 80
+
+Save as "Dockerfile" inside the same Gallery folder.
+
+EXECUTION OF EXPERIMENT 2 USING CMD
+
+First, open Docker Desktop and wait until the engine is running.
+
+Open CMD and execute these commands one by one.
+
+Step 1: Open the Gallery folder
+
+cd /d "%USERPROFILE%\Desktop\Gallery"
+
+Step 2: Build Docker image
+
+docker build -t mygallery .
+
+Step 3: Check Docker image
+
+docker images
+
+Step 4: Run Docker container with automatic port mapping
+
+docker run -d -p 80 --name gallery mygallery
+
+Step 5: Check running container
+
+docker ps
+
+
+
+
+Step 6: Check the PORTS column.
+
+Example: "0.0.0.0:49153->80/tcp"
+
+Step 7: Open Chrome and enter:
+
+"http://localhost:49153"
+
+Replace 49153 with the actual port displayed in CMD.
+
+
+
+
+
+
+
+IMPORTANT DOCKER COMMANDS
+
+docker build -t mygallery .
+docker images
+docker run -d -p 80 --name gallery mygallery
+docker ps
+docker stop gallery
+docker rm -f gallery
+
+RESULT
+
+Successfully created an HTML image gallery containing four images with captions, built a Docker image, and executed the gallery application inside a Docker container using automatic port mapping.
+
+
+
+8.2
