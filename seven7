@@ -1,0 +1,156 @@
+mkdir set7-html
+cd set7-html
+cd
+notepad index.html
+start index.html
+git init
+git add .
+git commit -m "Created html tables and lists"
+git branch -M main
+git remote add origin https://github.com/sveenacse2405b4-ab/set7-html.git
+git push -u origin main
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tables and Lists</title>
+</head>
+<body>
+
+<h1>My College Details</h1>
+
+<h2>Student Details</h2>
+
+<table border="1">
+<tr>
+    <th>Name</th>
+    <th>Roll Number</th>
+    <th>Department</th>
+</tr>
+<tr>
+    <td>Veena</td>
+    <td>101</td>
+    <td>CSE</td>
+</tr>
+<tr>
+    <td>Roshni</td>
+    <td>102</td>
+    <td>CSE</td>
+</tr>
+</table>
+
+<h2>Subjects</h2>
+<ul>
+    <li>Java</li>
+    <li>Python</li>
+    <li>DBMS</li>
+</ul>
+
+<h2>Daily Activities</h2>
+<ol>
+    <li>Wake up</li>
+    <li>Attend College</li>
+    <li>Study</li>
+</ol>
+
+</body>
+</html>
+
+
+2
+
+mkdir Secret-Message
+cd Secret-Message
+git init
+echo Secret Message Project > README.txt
+git add .
+git commit -m "Initial commit"
+
+git switch -c part1
+echo KNOWLEDGE > part1.txt
+git add .
+git commit -m "First secret message"
+
+git switch -c part2
+echo IS > part2.txt
+git add .
+git commit -m "Second secret message"
+
+git switch -c part3
+echo POWER > part3.txt
+git add .
+git commit -m "Third secret message"
+
+git switch -c main
+git merge part1
+git merge part2
+git merge part3
+
+type part1.txt part2.txt part3.txt
+
+
+
+
+3
+cd /d "%USERPROFILE%\Desktop"
+mkdir Selenium-Calculator
+cd Selenium-Calculator
+notepad index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+</head>
+<body>
+
+<h1>Calculator</h1>
+
+<input type="number" id="a" placeholder="First number">
+<input type="number" id="b" placeholder="Second number">
+
+<button id="add" onclick="addNumbers()">Add</button>
+
+<h2 id="result">Result:</h2>
+
+<script src="calculator.js"></script>
+
+</body>
+</html>
+3.1
+notepad calculator.js
+
+function addNumbers() {
+    let a = Number(document.getElementById("a").value);
+    let b = Number(document.getElementById("b").value);
+    let sum = a + b;
+    document.getElementById("result").innerHTML = "Result: " + sum;
+}
+
+3.2
+notepad test.js
+
+const {Builder, By} = require("selenium-webdriver");
+
+async function test() {
+    let driver = await new Builder().forBrowser("chrome").build();
+
+    await driver.get(require("url").pathToFileURL(require("path").resolve("index.html")).href);
+
+    await driver.findElement(By.id("a")).sendKeys("10");
+    await driver.findElement(By.id("b")).sendKeys("20");
+    await driver.findElement(By.id("add")).click();
+
+    console.log(await driver.findElement(By.id("result")).getText());
+
+    await driver.quit();
+}
+
+test();
+3.3
+npm init -y
+npm install selenium-webdriver
+node test.js
+npm init -y
+npm install selenium-webdriver
+node test.js
